@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "wa-chan-scanner",
-    "description": "This project is really great.",
+    "name": "WA-chan Scanner",
+    "description": "A simple barcode scanner application.",
     "slug": "wa-chan-scanner",
     "privacy": "public",
     "sdkVersion": "28.0.0",

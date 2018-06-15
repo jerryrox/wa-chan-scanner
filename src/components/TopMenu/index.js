@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
         flex: 1,
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        justifyContent: "center",
         alignItems: "center",
 
         borderBottomColor: "#ff9933",
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     },
 
     sectionContainer: {
+        width: "40%",
         height: "100%",
     },
 

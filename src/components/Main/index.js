@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {audioClips, audioTypes} from '../../audioSource';
-import {loadPrefs} from '../../prefs';
+import {loadPrefs, resetPrefs} from '../../prefs';
 import * as globalState from '../../globalState';
 
 import Loader from '../Loader';
@@ -59,6 +59,9 @@ export default class Main extends React.Component {
     };
 
     playGreetAudio = () => {
+        audioClips.playAudio(
+            audioTypes.BGM.getKeyAt(0)
+        );
         audioClips.playAudio(audioTypes.Greet.getRandomKey());
     }
 

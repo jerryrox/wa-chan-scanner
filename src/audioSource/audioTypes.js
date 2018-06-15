@@ -41,12 +41,14 @@ export class AudioType {
 }
 
 const audioTypes = {
-    BGM: new AudioType(1,
+    BGM: new AudioType(2,
         [
-            require('../../assets/audios/bgm_home.mp3')
+            require('../../assets/audios/bgm_home.mp3'),
+            require('../../assets/audios/bgm_shop.mp3')
         ],
         [
             "bgm_home",
+            "bgm_shop"
         ],
         true
     ),

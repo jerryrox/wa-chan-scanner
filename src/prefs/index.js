@@ -5,8 +5,8 @@ const defaultPrefs = {
     points: 0,
     curCharIndex: 0,
     curBgIndex: 0,
-    charBoughtIndex: 0,
-    bgBoughtIndex: 0,
+    charBoughtItems: [0],
+    bgBoughtItems: [0],
 };
 
 function setPrefsObject(prefsObj) {
@@ -15,6 +15,11 @@ function setPrefsObject(prefsObj) {
 
 function getPrefsObject() {
     return global.prefsObj;
+}
+
+export function resetPrefs() {
+    setPrefsObject(defaultPrefs);
+    savePrefs();
 }
 
 export function savePrefs() {
@@ -27,6 +32,10 @@ export function loadPrefs(callback) {
         callback();
     });
 }
+
+// =======================================================================
+// Get methods
+// =======================================================================
 
 export function getTotalScans() {
     return getPrefsObject().totalScans;
@@ -44,13 +53,17 @@ export function getCurBgIndex() {
     return getPrefsObject().curBgIndex;
 }
 
-export function getCharBoughtIndex() {
-    return getPrefsObject().charBoughtIndex;
+export function getIsCharBought(index) {
+    return getPrefsObject().charBoughtItems.indexOf(index) >= 0;
 }
 
-export function getBgBoughtIndex() {
-    return getPrefsObject().bgBoughtIndex;
+export function getIsBgBought(index) {
+    return getPrefsObject().bgBoughtItems.indexOf(index) >= 0;
 }
+
+// =======================================================================
+// Set methods
+// =======================================================================
 
 export function setTotalScans(val) {
     getPrefsObject().totalScans = val;
@@ -72,12 +85,12 @@ export function setCurBgIndex(val) {
     savePrefs();
 }
 
-export function setCharBoughtIndex(val) {
-    getPrefsObject().charBoughtIndex = val;
+export function setCharBoughtItem(val) {
+    getPrefsObject().charBoughtItems.push(val);
     savePrefs();
 }
 
-export function setBgBoughtIndex(val) {
-    getPrefsObject().bgBoughtIndex = val;
+export function setBgBoughtItem(val) {
+    getPrefsObject().bgBoughtItems.push(val);
     savePrefs();
 }

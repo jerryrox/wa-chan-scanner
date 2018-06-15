@@ -6,6 +6,8 @@ export const backgrounds = [
     require('../assets/bgs/4.png'),
 ];
 
+export const shopBackground = require('../assets/bgs/shop.png');
+
 export const characters = [
     require('../assets/chars/0_0.png'),
     require('../assets/chars/0_1.png'),

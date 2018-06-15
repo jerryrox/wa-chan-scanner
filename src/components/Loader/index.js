@@ -6,7 +6,7 @@ export default class Loader extends React.Component {
     render() {
         return(
             <View style={styles.container}>
-                <Text>Loader</Text>
+                <Text>Loading ...</Text>
             </View>
         );
     }

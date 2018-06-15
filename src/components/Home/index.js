@@ -7,12 +7,6 @@ import {audioClips, audioTypes} from '../../audioSource';
 
 export default class Home extends React.Component {
 
-    componentDidMount() {
-        // audioClips.playAudio(
-        //     audioTypes.BGM.getKeyAt(0)
-        // );
-    }
-
     render() {
         return(
             <View style={styles.container}>

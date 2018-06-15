@@ -22,7 +22,7 @@ export default class ScanResult extends React.Component {
 
     componentDidMount() {
         const {type, data} = globalState.getScanResult();
-        const isSuccess = type && data;
+        const isSuccess = type !== null && data !== null;
         this.setState({
             type,
             data,
@@ -105,7 +105,8 @@ export default class ScanResult extends React.Component {
             <View style={[StyleSheet.absoluteFill, styles.displayContainer]}>
                 <ScrollView
                     style={styles.scrollView}
-                    justifyContent="center"
+                    justifyContent="flex-start"
+                    alignItems="center"
                 >
                     <View style={styles.bodyContainer}>
                         <Text style={styles.headerText}>Rewards</Text>
@@ -119,7 +120,7 @@ export default class ScanResult extends React.Component {
                         <Text style={styles.headerText}>Code Data</Text>
                         <Text style={styles.contentText}>{this.state.data}</Text>
                     </View>
-                    <View style={styles.menuContainer}>
+                    <View style={styles.bodyContainer}>
                         <Text style={styles.headerText}>Actions</Text>
                         <View style={styles.actionsContainer}>
                             {
@@ -144,14 +145,14 @@ export default class ScanResult extends React.Component {
 
     displayFail = () => {
         return (
-            <View style={[StyleSheet.absoluteFill, styles.displayContainer]}>
-
+            <View style={[StyleSheet.absoluteFill, styles.failContainer]}>
+                <Text style={styles.failText}>Scan cancelled... :(</Text>
             </View>
         );
     };
 
     render() {
-        const {type, data, isSuccess} = this.state;
+        const {isSuccess} = this.state;
 
         return(
             <View style={[StyleSheet.absoluteFill, styles.baseContainer]}>
@@ -168,9 +169,19 @@ const styles = StyleSheet.create({
     },
 
     displayContainer: {
-        justifyContent: "center",
-        alignItems: "center",
         flex: 1
+    },
+
+    failContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+
+    failText: {
+        fontWeight: "700",
+        fontSize: 22,
+        color: "#fff",
     },
 
     scrollView: {
@@ -205,13 +216,15 @@ const styles = StyleSheet.create({
     },
 
     actionsContainer: {
+        width: 200,
         flex: 1,
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
     },
 
     actionsTouchable: {
-        width: "50%",
+        width: "100%",
         height: 36,
         marginBottom: 5,
         marginTop: 5,
@@ -222,6 +235,7 @@ const styles = StyleSheet.create({
     actionButton: {
         backgroundColor: "#ffc691",
         flex: 1,
+        width: "100%",
         justifyContent: "center",
         alignItems: "center",
     },
