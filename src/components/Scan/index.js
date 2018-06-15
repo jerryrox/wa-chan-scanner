@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 
+import {audioClips, audioTypes} from '../../audioSource';
 import * as globalState from '../../globalState';
 import viewIndexes from '../../viewIndexes';
 
@@ -19,6 +20,7 @@ export default class Scan extends React.Component {
         this.setState({
             hasCameraPermission: status === 'granted'
         });
+        audioClips.playAudio(audioTypes.Take.getRandomKey());
     }
 
     onBarcodeRead = ({type, data}) => {
@@ -46,12 +48,11 @@ export default class Scan extends React.Component {
             return <Text>Requesting for camera permission ...</Text>;
         else if (hasCameraPermission === false) {
             alert("You must grant access to this application to function properly.");
-            this.onBarcodeRead(null, null);
+            this.onBarcodeRead({type: null, data: null});
             return <Text>No access to camera!</Text>;
         }
         return (
             <BarCodeScanner
-                rotation = {false}
                 onBarCodeRead = {this.onBarcodeRead}
                 style = {StyleSheet.absoluteFill}
             />

@@ -21,7 +21,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.reisenmoe.wachanscanner"
+    },
+    "android": {
+      "package": "com.reisenmoe.wachanscanner",
+      "permissions":[
+        "CAMERA"
+      ]
     }
   }
 }
